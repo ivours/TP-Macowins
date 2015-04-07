@@ -5,3 +5,5 @@ package grupo8.macowins;
 public interface Tasacion {
 	public double tasa();
 }
+
+//hola
