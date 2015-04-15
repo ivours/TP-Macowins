@@ -20,7 +20,7 @@ public class TestCalcularGananciaDelDia {
 	Venta venta1;
 	Venta venta2;
 	ArrayList<Venta> listaDeVentas;
-	Macowins unLocal;
+	Local unLocal;
 	
 	@Before
 	public void init()

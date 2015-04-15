@@ -1,4 +1,4 @@
-package grupo8.TPMacowins;
+package grupo8.macowins;
 
 public class Sombrero extends Prenda {
 	private int coeficienteDeMetrosexualidad;
