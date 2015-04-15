@@ -1,61 +1,22 @@
-package grupo8.macowins;
+package grupo8.TPMacowins;
 
-public class Prenda {
+abstract class Prenda {
 	
-	private static int ValorFijo;
-	private static int PrecioPantalon;
-	private static int PrecioCamisa;
-	private static int PrecioSaco;
-	private Tasacion origen;
-	//Agregue precioBase para que el metodo precioFinal sea polimorfico.
-	private int precioBase;
+	private static int valorFijo;
+	private double tasaImportacion;
+	private Marca marca;
 	
+	public abstract int precioBase();
 	
-	public static void setPrecioPantalon(int unPrecio) {
-		PrecioPantalon = unPrecio;
+	public Prenda(double tasa, Marca unaMarca){
+		tasaImportacion = tasa;
+		marca = unaMarca;
 	}
-	public static void setPrecioCamisa(int unPrecio) {
-		PrecioCamisa = unPrecio;
-	}
-	public static void setPrecioSaco(int unPrecio) {
-		PrecioSaco = unPrecio;
-	}
+	
 	public static void setValorFijo(int unValor) {
-		ValorFijo = unValor;
+		valorFijo = unValor;
 	}
-	
-	public void setPrecioBase(int unPrecio) {
-		precioBase = unPrecio;
-		return;
-	}
-	
-	public void setOrigen(Tasacion unOrigen) {
-		origen = unOrigen;
-		return;
-	}
-	
-	public static Prenda crearPantalon(Tasacion unOrigen) {
-		Prenda unPantalon = new Prenda();
-		unPantalon.setPrecioBase(PrecioPantalon);
-		unPantalon.setOrigen(unOrigen);
-		return unPantalon;
-	}
-	
-	public static Prenda crearCamisa(Tasacion unOrigen) {
-		Prenda unaCamisa = new Prenda();
-		unaCamisa.setPrecioBase(PrecioCamisa);
-		unaCamisa.setOrigen(unOrigen);
-		return unaCamisa;
-	}
-	
-	public static Prenda crearSaco(Tasacion unOrigen) {
-		Prenda unSaco = new Prenda();
-		unSaco.setPrecioBase(PrecioSaco);
-		unSaco.setOrigen(unOrigen);
-		return unSaco;
-	}
-	
 	public double precioFinal() {
-		return ((ValorFijo + precioBase) * origen.tasa());
+		return ((valorFijo + this.precioBase()) * tasaImportacion + marca.recargo(this.precioBase()));
 	}
 }

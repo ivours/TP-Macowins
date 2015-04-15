@@ -1,4 +1,4 @@
-package grupo8.macowins;
+package grupo8.TPMacowins;
 
 import java.util.ArrayList;
 

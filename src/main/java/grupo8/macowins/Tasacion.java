@@ -1,4 +1,4 @@
-package grupo8.macowins;
+package grupo8.TPMacowins;
 
 //Esto lo agregue para poner un tipo en la variable ORIGEN de la clase PRENDA
 
@@ -16,4 +16,3 @@ public class Tasacion {
 	}
 	
 }
-
