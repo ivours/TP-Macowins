@@ -1,21 +1,26 @@
 package grupo8.macowins;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class Local {
 	
-	private ArrayList<Venta> ventas;
+	private List<Venta> ventas;
 	
 	//Esto es el constructor.
-	public Local(ArrayList<Venta> listaDeVentas) {
+	public Local(List<Venta> listaDeVentas) {
 		ventas = listaDeVentas;
 	}
 	
-	public double gananciaDelDia(int unafecha) {
-		double gananciaTotal = 0;
-		for(Venta v : ventas) {
-			gananciaTotal = gananciaTotal + v.ganancia();
-		}
-		return gananciaTotal;
+	public double gananciaDelDia(int unaFecha) {
+		
+		return ventasDeLaFecha(unaFecha).stream().map(Venta::ganancia).reduce((venta1,venta2)-> venta1 + venta2);
+		
+	}
+	
+
+	public List<Venta> ventasDeLaFecha(int unaFecha)
+	{
+		return (List<Venta>) ventas.stream().filter(venta -> venta.esDeLaFecha(unaFecha));
 	}
 }

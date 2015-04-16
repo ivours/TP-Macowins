@@ -1,12 +1,13 @@
 package grupo8.macowins;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class Venta {
 	
 	private int fecha;
 	
-	private ArrayList<Prenda> prendas;
+	private List<Prenda> prendas;
 	
 	
 	public int fecha()
@@ -15,21 +16,20 @@ public class Venta {
 	}
 	
 	public double ganancia()
+	{	
+		return prendas.stream().map(Prenda::precioFinal).reduce((prenda1,prenda2) -> prenda1 + prenda2);
+	}
+	
+	public boolean esDeLaFecha(int unaFecha)
 	{
-		double gananciaTotal = 0;
-		
-		for(Prenda p : prendas) {
-			gananciaTotal = gananciaTotal + p.precioFinal();
-		}
-		
-		return gananciaTotal;
+		return (this.fecha() == unaFecha);
 	}
 	
 	public int cantidad() {
 		return prendas.size();
 	}
 	//Constructor.
-	public Venta(ArrayList<Prenda> listaDePrendas, int unaFecha) {
+	public Venta(List<Prenda> listaDePrendas, int unaFecha) {
 		
 		fecha = unaFecha;
 		prendas = listaDePrendas;
