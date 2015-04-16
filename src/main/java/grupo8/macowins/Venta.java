@@ -1,16 +1,18 @@
 package grupo8.macowins;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 public class Venta {
 	
-	private int fecha;
+	private LocalDate fecha;
 	
 	private List<Prenda> prendas;
 	
 	
-	public int fecha()
+	
+	public LocalDate fecha()
 	{
 		return fecha;
 	}
@@ -20,18 +22,18 @@ public class Venta {
 		return prendas.stream().map(Prenda::precioFinal).reduce((prenda1,prenda2) -> prenda1 + prenda2);
 	}
 	
-	public boolean esDeLaFecha(int unaFecha)
+	public boolean esDeLaFecha(LocalDate otraFecha)
 	{
-		return (this.fecha() == unaFecha);
+		return fecha.isEqual(otraFecha);
 	}
 	
 	public int cantidad() {
 		return prendas.size();
 	}
 	//Constructor.
-	public Venta(List<Prenda> listaDePrendas, int unaFecha) {
+	public Venta(List<Prenda> listaDePrendas, int año, int mes, int dia) {
 		
-		fecha = unaFecha;
+		fecha = LocalDate.of(año,mes,dia);
 		prendas = listaDePrendas;
 		
 	}
