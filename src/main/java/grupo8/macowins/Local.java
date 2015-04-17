@@ -19,11 +19,10 @@ public class Local {
 	
 	public double gananciaDelDia(int año, int mes, int dia) {
 		
-		return ventasDeLaFecha(año,mes,dia).stream().map(Venta::ganancia).reduce((venta1,venta2)-> venta1 + venta2);
+		return ventasDeLaFecha(año,mes,dia).stream().map(Venta::ganancia).reduce((venta1,venta2)-> venta1 + venta2).get();
 		
 	}
 	
-
 	public List<Venta> ventasDeLaFecha(int año, int mes, int dia)
 	{
 		LocalDate fecha = LocalDate.of(año, mes, dia);

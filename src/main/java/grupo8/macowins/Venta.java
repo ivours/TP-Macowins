@@ -2,7 +2,6 @@ package grupo8.macowins;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 public class Venta {
 	
@@ -19,7 +18,7 @@ public class Venta {
 	
 	public double ganancia()
 	{	
-		return prendas.stream().map(Prenda::precioFinal).reduce((prenda1,prenda2) -> prenda1 + prenda2);
+		return prendas.stream().map(Prenda::precioFinal).reduce((prenda1,prenda2) -> prenda1 + prenda2).get();
 	}
 	
 	public boolean esDeLaFecha(LocalDate otraFecha)
