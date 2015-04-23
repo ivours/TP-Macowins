@@ -4,13 +4,18 @@ public class Saco extends Prenda {
 	
 	private int numeroDeBotones;
 	
-	public Saco(double tasa, Marca marca, int botones){
-		super(tasa, marca);
+	public Saco(boolean esImportado, Marca marca, int botones){
+		super(esImportado, marca);
 		numeroDeBotones = botones;
 	}
 	
+	public int valorFijo()
+	{
+		return 300;
+	}
+	
 	public int precioBase() {
-		return 300 + (numeroDeBotones*10);
+		return this.valorFijo() + (numeroDeBotones*10);
 	}
 
 }

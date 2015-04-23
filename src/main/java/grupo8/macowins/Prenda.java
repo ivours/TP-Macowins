@@ -3,13 +3,13 @@ package grupo8.macowins;
 abstract class Prenda {
 	
 	private static int valorFijo;
-	private double tasaImportacion;
+	private boolean esImportada;
 	private Marca marca;
 	
 	public abstract int precioBase();
 	
-	public Prenda(double tasa, Marca unaMarca){
-		tasaImportacion = tasa;
+	public Prenda(boolean esPrendaImportada, Marca unaMarca){
+		esImportada = esPrendaImportada;
 		marca = unaMarca;
 	}
 	
@@ -17,6 +17,10 @@ abstract class Prenda {
 		valorFijo = unValor;
 	}
 	public double precioFinal() {
-		return ((valorFijo + this.precioBase()) * tasaImportacion + marca.recargo(this.precioBase()));
+		return ((valorFijo + this.precioBase()) * tasaImportacion()) * marca.recargo(this.precioBase());
+	}
+	
+	public double tasaImportacion() {
+		return this.esImportada ? 1.3 : 1; 
 	}
 }
