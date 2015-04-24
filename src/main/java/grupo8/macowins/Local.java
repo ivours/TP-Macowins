@@ -17,15 +17,13 @@ public class Local {
 		ventas.add(unaVenta);
 	}
 	
-	public double gananciaDelDia(int anio, int mes, int dia) {
-		
-		return ventasDeLaFecha(anio,mes,dia).stream().map(Venta::ganancia).reduce((venta1,venta2)-> venta1 + venta2).get();
+	public double gananciaDelDia(String dia) {
+		LocalDate fecha = LocalDate.parse(dia);
+		return ventasDeLaFecha(fecha).stream().map(Venta::ganancia).reduce((venta1,venta2)-> venta1 + venta2).get();
 		
 	}
 	
-	public List<Venta> ventasDeLaFecha(int anio, int mes, int dia)
-	{
-		LocalDate fecha = LocalDate.of(anio, mes, dia);
+	public List<Venta> ventasDeLaFecha(LocalDate fecha){
 		return ventas.stream().filter(venta -> venta.esDeLaFecha(fecha)).collect(Collectors.toList());
 	}
 }
