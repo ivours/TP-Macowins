@@ -30,9 +30,9 @@ public class Venta {
 		return prendas.size();
 	}
 	//Constructor.
-	public Venta(List<Prenda> listaDePrendas, String dia) {
+	public Venta(List<Prenda> listaDePrendas, LocalDate dia) {
 		
-		fecha = LocalDate.parse(dia);
+		fecha = dia;
 		prendas = listaDePrendas;
 		
 	}

@@ -17,8 +17,7 @@ public class Local {
 		ventas.add(unaVenta);
 	}
 	
-	public double gananciaDelDia(String dia) {
-		LocalDate fecha = LocalDate.parse(dia);
+	public double gananciaDelDia(LocalDate fecha) {
 		return ventasDeLaFecha(fecha).stream().map(Venta::ganancia).reduce((venta1,venta2)-> venta1 + venta2).get();
 		
 	}
